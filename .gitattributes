@@ -41,6 +41,7 @@
 *.scm           text
 *.scss          text
 *.sh            text eol=lf
+/hooks/*        text eol=lf
 *.sql           text
 *.styl          text
 *.tag           text

@@ -6,16 +6,20 @@ Basic test suite to verify core functionality of the Doxygen MCP server.
 
 import asyncio
 import json
+import os
 import tempfile
 import pytest
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from server import DoxygenConfig, mcp, create_doxygen_project, generate_documentation, scan_project, check_doxygen_install
+from doxygen_mcp.server import (
+    DoxygenConfig,
+    mcp,
+    create_doxygen_project,
+    generate_documentation,
+    scan_project,
+    check_doxygen_install,
+)
 
 
 class TestDoxygenConfig:
@@ -59,7 +63,7 @@ class TestDoxygenConfig:
 @pytest.mark.asyncio
 async def test_create_project_success():
     """Test successful project creation"""
-    with tempfile.TemporaryDirectory() as temp_dir:
+    with tempfile.TemporaryDirectory(dir=os.getcwd()) as temp_dir:
         result = await create_doxygen_project(
             project_name="Test Project",
             project_path=temp_dir,
@@ -90,7 +94,7 @@ async def test_create_project_invalid_path():
         language="cpp"
     )
 
-    assert "❌ Failed to create project:" in result
+    assert "❌ Invalid project path:" in result
 
 @pytest.mark.asyncio
 async def test_scan_project_nonexistent():
@@ -154,7 +158,7 @@ async def test_check_doxygen_install_not_found(mock_run):
 @pytest.mark.asyncio
 async def test_generate_documentation_no_doxyfile():
     """Test documentation generation without Doxyfile"""
-    with tempfile.TemporaryDirectory() as temp_dir:
+    with tempfile.TemporaryDirectory(dir=os.getcwd()) as temp_dir:
         result = await generate_documentation(
             project_path=temp_dir,
             output_format="html"
@@ -166,7 +170,7 @@ async def test_generate_documentation_no_doxyfile():
 @patch('subprocess.run')
 async def test_generate_documentation_success(mock_run):
     """Test successful documentation generation"""
-    with tempfile.TemporaryDirectory() as temp_dir:
+    with tempfile.TemporaryDirectory(dir=os.getcwd()) as temp_dir:
         # Create a mock Doxyfile
         doxyfile_path = Path(temp_dir) / "Doxyfile"
         doxyfile_path.write_text("PROJECT_NAME = Test")
