@@ -9,7 +9,12 @@
       "Bash(ls:*)",
       "Bash(where:*)",
       "mcp__doxygen__generate_documentation",
-      "mcp__doxygen__validate_documentation"
+      "mcp__doxygen__validate_documentation",
+      "Bash(uv run *)",
+      "Bash(bash hooks/ci-check.sh)",
+      "Bash(powershell.exe *)",
+      "Bash(python -c ' *)",
+      "Bash(uv venv *)"
     ]
   }
 }

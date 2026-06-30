@@ -20,7 +20,12 @@ Key Features:
 - Custom theme and layout support
 """
 
-__version__ = "1.0.0"
+try:
+    from ._version import __version__
+except ImportError:
+    from importlib.metadata import version
+
+    __version__ = version("doxygen-mcp")
 __author__ = "Positronikal"
 __email__ = "hoyt.harness@gmail.com"
 

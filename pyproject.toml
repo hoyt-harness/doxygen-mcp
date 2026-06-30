@@ -1,6 +1,6 @@
 [project]
 name = "doxygen-mcp"
-version = "1.0.0"
+dynamic = ["version"]
 description = "A comprehensive Model Context Protocol (MCP) server that provides full access to Doxygen's documentation generation capabilities."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -53,8 +53,15 @@ select = ["E", "F", "S"]
 doxygen-mcp = "doxygen_mcp.__main__:main"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+raw-options = { version_scheme = "no-guess-dev" }
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/doxygen_mcp/_version.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/doxygen_mcp"]
@@ -65,7 +72,7 @@ python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = [
-    "--cov=src/doxygen_mcp",
+    "--cov=doxygen_mcp",
     "--cov-report=term-missing",
     "--cov-report=html",
     "-v"
@@ -74,7 +81,7 @@ asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
 
 [tool.coverage.run]
-source = ["src/doxygen_mcp"]
+relative_files = true
 omit = ["tests/*", "**/__pycache__/*"]
 
 [tool.coverage.report]
