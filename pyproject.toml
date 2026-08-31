@@ -20,7 +20,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "mcp>=1.0.0,<2.0.0",  # mcp 2.0 removes mcp.server.fastmcp; migration deferred
+    "mcp>=1.0.0,<3.0.0",  # mcp 2.0 removes mcp.server.fastmcp; migration deferred
     "pydantic>=2.0.0",
     "lxml>=6.1.0",
 ]
