@@ -11,6 +11,13 @@ We take security vulnerabilities seriously. If you discover a security issue, pl
 
 We will do our best to respond to your report within 48 hours.
 
+**Email:** admin@positronikal.tech — use this if you prefer not to use GitHub
+or if the vulnerability affects multiple Positronikal projects.
+
+## Supported Versions
+
+The latest stable release (see [Releases](https://github.com/hoyt-harness/doxygen-mcp/releases) or `git tag`) receives security patches. Earlier releases do not.
+
 ## Security Standards
 
 This project adheres to the [Positronikal Repository Security Rules](https://github.com/Positronikal/PositronikalCodingStandards/blob/main/standards/Repository%20Security%20Rules.md). Please refer to these rules for more information on our security practices.
