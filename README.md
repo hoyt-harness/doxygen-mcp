@@ -1,8 +1,6 @@
 # Doxygen MCP Server
 A comprehensive Model Context Protocol (MCP) server that provides full access to Doxygen's documentation generation capabilities. This server enables AI assistants like Claude to generate, configure, and manage documentation for any supported programming language through a clean, powerful interface.
 
-Refer to the `docs/` directory in this repository for more comprehensive documentation.
-
 ## Overview
 The Doxygen MCP Server automates the generation of documentation from source code comments, parsing information about classes, functions, and variables to produce output in formats like HTML and PDF. By simplifying and standardizing the documentation process, it enhances collaboration and maintenance across diverse programming languages and project scales.
 
